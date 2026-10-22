@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pesan Masuk - Cortez Web</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <main style="padding-top: 50px; padding-bottom: 60px;">
+        <h1>Pesan <span class="gradient-text">Masuk</span></h1>
+        <p class="hero-copy">Daftar pesan yang tersimpan di komputer ini.</p>
+
+        <a class="button secondary" href="/">← Kembali ke website</a>
+
+        {% if pesan %}
+            {% for item in pesan|reverse %}
+                <article class="feature-card" style="margin-top: 20px;">
+                    <h3>{{ item.nama }}</h3>
+                    <p>{{ item.isi }}</p>
+                    <span class="tag">{{ item.waktu }}</span>
+                </article>
+            {% endfor %}
+        {% else %}
+            <p style="margin-top: 30px;">Belum ada pesan yang masuk.</p>
+        {% endif %}
+    </main>
+</body>
+</html>
